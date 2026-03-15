@@ -1,0 +1,22 @@
+name: EulerLiveUI CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode.app
+
+      - name: Build
+        run: swift build
+
+      - name: Run tests
+        run: swift test
