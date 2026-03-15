@@ -2,7 +2,6 @@ import XCTest
 @testable import EulerLiveUI
 
 final class CountFormatterTests: XCTestCase {
-
     func testFormattingThousands() {
         XCTAssertEqual(CountFormatter.format(1200), "1.2K")
     }

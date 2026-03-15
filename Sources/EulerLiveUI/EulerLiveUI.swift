@@ -1,5 +1,5 @@
 import SwiftUI
 
-public struct EulerLiveUI {
+public enum EulerLiveUI {
     public static let version = "0.1.0"
 }

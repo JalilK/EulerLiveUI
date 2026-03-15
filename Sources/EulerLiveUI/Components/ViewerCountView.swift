@@ -1,7 +1,6 @@
 import SwiftUI
 
 public struct ViewerCountView: View {
-
     public let count: Int
 
     public init(count: Int) {
@@ -9,13 +8,12 @@ public struct ViewerCountView: View {
     }
 
     public var body: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "eye.fill")
-            Text("\(count)")
-                .fontWeight(.semibold)
-        }
-        .padding(6)
-        .background(.ultraThinMaterial)
-        .clipShape(Capsule())
+        CountPillView(
+            model: CountPillModel(
+                title: "Viewers",
+                countText: CountFormatter.format(count),
+                systemImageName: "eye.fill"
+            )
+        )
     }
 }
