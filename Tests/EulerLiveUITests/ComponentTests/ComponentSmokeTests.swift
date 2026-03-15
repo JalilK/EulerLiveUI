@@ -1,16 +1,25 @@
-import SwiftUI
-import XCTest
+import Testing
 @testable import EulerLiveUI
 
-final class ComponentSmokeTests: XCTestCase {
-    func testAvatarViewCanBeConstructed() {
-        let model = AvatarModel(id: "1", displayName: "Euler")
+struct ComponentSmokeTests {
+    @Test
+    func avatarViewCanBeConstructed() {
+        let model = AvatarModel(
+            id: "1",
+            displayName: "Euler"
+        )
+
         let view = AvatarView(model: model)
-        XCTAssertNotNil(view)
+
+        #expect(String(describing: type(of: view)).contains("AvatarView"))
     }
 
-    func testToastBannerViewCanBeConstructed() {
-        let view = ToastBannerView(model: ToastBannerModel(title: "Hello"))
-        XCTAssertNotNil(view)
+    @Test
+    func toastBannerViewCanBeConstructed() {
+        let view = ToastBannerView(
+            model: ToastBannerModel(title: "Hello")
+        )
+
+        #expect(String(describing: type(of: view)).contains("ToastBannerView"))
     }
 }

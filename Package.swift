@@ -22,14 +22,18 @@ let package = Package(
             name: "EulerLiveUI",
             path: "Sources/EulerLiveUI"
         ),
+
         .executableTarget(
             name: "EulerLiveUIDemoApp",
             dependencies: ["EulerLiveUI"],
             path: "Examples/EulerLiveUIDemoApp"
         ),
+
         .testTarget(
             name: "EulerLiveUITests",
-            dependencies: ["EulerLiveUI"],
+            dependencies: [
+                "EulerLiveUI"
+            ],
             path: "Tests/EulerLiveUITests"
         )
     ]

@@ -1,12 +1,14 @@
-import XCTest
+import Testing
 @testable import EulerLiveUI
 
-final class ThemeTests: XCTestCase {
-    func testThemesExposeDistinctCornerRadius() {
-        XCTAssertNotEqual(EulerLiveTheme.default.cornerRadius, EulerLiveTheme.darkNeon.cornerRadius)
+struct ThemeTests {
+    @Test
+    func themesExposeDistinctCornerRadius() {
+        #expect(EulerLiveTheme.default.cornerRadius != EulerLiveTheme.darkNeon.cornerRadius)
     }
 
-    func testMinimalLightUsesFastAnimation() {
-        XCTAssertGreaterThan(EulerLiveTheme.minimalLight.animationDuration, 0)
+    @Test
+    func minimalLightUsesPositiveAnimationDuration() {
+        #expect(EulerLiveTheme.minimalLight.animationDuration > 0)
     }
 }
