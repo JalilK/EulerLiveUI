@@ -5,10 +5,9 @@ struct RootDemoView: View {
     @State private var selectedTheme: ThemeSelection = .default
     @State private var avatarSize: Double = 72
     @State private var borderWidth: Double = 2
-    @State private var showsStatusDot = true
+    @State private var showsOverlay = false
     @State private var usesFallbackAvatar = false
     @State private var usesRoundedShape = false
-    @State private var showsOverlay = false
 
     private var currentAvatar: AvatarModel {
         usesFallbackAvatar ? DemoFixtures.fallbackAvatar : DemoFixtures.avatar
@@ -37,32 +36,23 @@ struct RootDemoView: View {
                                 .fill(.green)
                                 .frame(width: 18, height: 18)
                                 .overlay(
-                                    Circle()
-                                        .stroke(.black, lineWidth: 3)
+                                    Circle().stroke(.black, lineWidth: 3)
                                 )
-                        }
-                    } {
-                        if showsStatusDot {
-                            Circle()
-                                .fill(.green)
-                                .frame(width: 18, height: 18)
-                                .overlay(Circle().stroke(.black, lineWidth: 3))
                         }
                     }
 
                     VStack(alignment: .leading, spacing: 14) {
-                        Toggle("Show status dot", isOn: $showsStatusDot)
                         Toggle("Show overlay", isOn: $showsOverlay)
                         Toggle("Use fallback avatar", isOn: $usesFallbackAvatar)
                         Toggle("Use rounded shape", isOn: $usesRoundedShape)
 
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("Avatar size  \(Int(avatarSize))")
+                            Text("Avatar size \(Int(avatarSize))")
                             Slider(value: $avatarSize, in: 40...180)
                         }
 
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("Border width  \(Int(borderWidth))")
+                            Text("Border width \(Int(borderWidth))")
                             Slider(value: $borderWidth, in: 0...8)
                         }
 
