@@ -13,6 +13,9 @@ let package = Package(
             targets: ["EulerLiveUI"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.7.0")
+    ],
     targets: [
         .target(
             name: "EulerLiveUI",
@@ -20,7 +23,10 @@ let package = Package(
         ),
         .testTarget(
             name: "EulerLiveUITests",
-            dependencies: ["EulerLiveUI"],
+            dependencies: [
+                "EulerLiveUI",
+                .product(name: "Testing", package: "swift-testing")
+            ],
             path: "Tests/EulerLiveUITests"
         )
     ]
