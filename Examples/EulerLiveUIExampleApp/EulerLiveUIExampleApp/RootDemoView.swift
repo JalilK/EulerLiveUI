@@ -8,6 +8,7 @@ struct RootDemoView: View {
     @State private var showsStatusDot = true
     @State private var usesFallbackAvatar = false
     @State private var usesRoundedShape = false
+    @State private var showsOverlay = false
 
     private var currentAvatar: AvatarModel {
         usesFallbackAvatar ? DemoFixtures.fallbackAvatar : DemoFixtures.avatar
@@ -31,6 +32,16 @@ struct RootDemoView: View {
                             : .circle,
                         borderWidth: borderWidth
                     ) {
+                        if showsOverlay {
+                            Circle()
+                                .fill(.green)
+                                .frame(width: 18, height: 18)
+                                .overlay(
+                                    Circle()
+                                        .stroke(.black, lineWidth: 3)
+                                )
+                        }
+                    } {
                         if showsStatusDot {
                             Circle()
                                 .fill(.green)
@@ -41,6 +52,7 @@ struct RootDemoView: View {
 
                     VStack(alignment: .leading, spacing: 14) {
                         Toggle("Show status dot", isOn: $showsStatusDot)
+                        Toggle("Show overlay", isOn: $showsOverlay)
                         Toggle("Use fallback avatar", isOn: $usesFallbackAvatar)
                         Toggle("Use rounded shape", isOn: $usesRoundedShape)
 
