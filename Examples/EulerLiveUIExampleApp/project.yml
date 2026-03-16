@@ -1,0 +1,25 @@
+name: EulerLiveUIExampleApp
+
+options:
+  deploymentTarget:
+    macOS: "14.0"
+
+packages:
+  EulerLiveUI:
+    path: ../..
+
+targets:
+  EulerLiveUIExampleApp:
+    type: application
+    platform: macOS
+    sources:
+      - EulerLiveUIExampleApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jalilk.eulerliveui.example
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: 5.10
+        MACOSX_DEPLOYMENT_TARGET: 14.0
+    dependencies:
+      - package: EulerLiveUI
+        product: EulerLiveUI
