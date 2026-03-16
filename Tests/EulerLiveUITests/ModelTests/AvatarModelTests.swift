@@ -1,16 +1,14 @@
-import Testing
+import XCTest
 @testable import EulerLiveUI
 
-struct AvatarModelTests {
-    @Test
-    func fallbackInitialsUsesTwoWords() {
+final class AvatarModelTests: XCTestCase {
+    func testFallbackInitialsUsesTwoWords() {
         let model = AvatarModel(id: "1", displayName: "Jalil Kennedy")
-        #expect(model.fallbackInitials == "JK")
+        XCTAssertEqual(model.fallbackInitials, "JK")
     }
 
-    @Test
-    func fallbackInitialsUsesSingleWord() {
+    func testFallbackInitialsUsesSingleWord() {
         let model = AvatarModel(id: "1", displayName: "Euler")
-        #expect(model.fallbackInitials == "E")
+        XCTAssertEqual(model.fallbackInitials, "E")
     }
 }

@@ -1,9 +1,8 @@
-import Testing
+import XCTest
 @testable import EulerLiveUI
 
-struct AvatarViewTests {
-    @Test
-    func avatarViewCanBeConstructed() {
+final class AvatarViewTests: XCTestCase {
+    func testAvatarViewCanBeConstructed() {
         let model = AvatarModel(
             id: "1",
             displayName: "Euler"
@@ -11,11 +10,10 @@ struct AvatarViewTests {
 
         let view = AvatarView(model: model)
 
-        #expect(String(describing: type(of: view)).contains("AvatarView"))
+        XCTAssertTrue(String(describing: type(of: view)).contains("AvatarView"))
     }
 
-    @Test
-    func roundedAvatarViewCanBeConstructed() {
+    func testRoundedAvatarViewCanBeConstructed() {
         let model = AvatarModel(
             id: "2",
             displayName: "Jalil Kennedy"
@@ -28,6 +26,6 @@ struct AvatarViewTests {
             borderWidth: 2
         )
 
-        #expect(String(describing: type(of: view)).contains("AvatarView"))
+        XCTAssertTrue(String(describing: type(of: view)).contains("AvatarView"))
     }
 }
